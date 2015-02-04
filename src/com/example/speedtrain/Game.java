@@ -1,9 +1,7 @@
 package com.example.speedtrain;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -74,8 +72,8 @@ public class Game extends Activity implements OnClickListener{
 		textRestart = (Button) findViewById(R.id.textRestart);
 		textQuit = (Button) findViewById(R.id.textQuit);
 		
-		//DataBase
-		dbHelper = new DBHelper(this);
+//		//DataBase
+//		dbHelper = new DBHelper(this);
 		
 		//Setting Listeners
 		btnNo.setOnClickListener(this);
@@ -99,11 +97,6 @@ public class Game extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		
-		// object for data
-		ContentValues cv = new ContentValues();
 		
 		switch (v.getId()){
 			case R.id.btnStart:
@@ -135,9 +128,7 @@ public class Game extends Activity implements OnClickListener{
 				break;
 			case R.id.textFinish:
 				textFinish.setBackgroundResource(R.drawable.textclicked);
-				cv.put("date", SystemClock.uptimeMillis());
-				cv.put("score", score);
-				db.insert("records", null, cv);
+				DBHelper.getInstance(this).setNewRecord(this, score);
 				finish();
     			break;
 			case R.id.textRestart2:

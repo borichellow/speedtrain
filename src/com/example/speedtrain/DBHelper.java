@@ -1,23 +1,59 @@
 package com.example.speedtrain;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.SystemClock;
 
 public class DBHelper extends SQLiteOpenHelper {
+	private static DBHelper instance;
 
-    public DBHelper(Context context) {
+    private DBHelper(Context context) {
       super(context, "speedTrainDB", null, 1);
+    }
+    
+    public static DBHelper getInstance(Context context){
+    	if (instance == null){
+    		instance = new DBHelper(context);
+    	}
+    	return instance;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+//      db.execSQL("CREATE TABLE records (id INTEGER PRIMARY KEY AUTOINCREMENT,date LONG,score INTEGER);");
       db.execSQL("create table records (id integer primary key autoincrement,date long,score integer);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+    
+    }
+    
+    public void setNewRecord(Context context,int record){
+    	ContentValues cv = new ContentValues();
+    	cv.put("date", SystemClock.uptimeMillis());
+		cv.put("score", record);
+		DBHelper.getInstance(context).getWritableDatabase().insert("records", null, cv);
+		DBHelper.getInstance(context).close();
+    }
+    
+    public int[] getRecords(Context context){
+    	Cursor c = DBHelper.getInstance(context).getWritableDatabase().
+    			query("records", new String[] {"score"}, null, null, null, null, "score DESC");
+		int[] records = {} ;
+		if (c.moveToFirst()) {
+			int i = 0;
+			do {
+				int scoreColIndex = c.getColumnIndex("score");
+				records[i] = c.getInt(scoreColIndex);
+				i++;
+			} while (c.moveToNext());
+		}
+		DBHelper.getInstance(context).close();
+		return records;
     }
 
 }
