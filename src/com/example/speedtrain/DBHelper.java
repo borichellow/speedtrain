@@ -23,8 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-//      db.execSQL("CREATE TABLE records (id INTEGER PRIMARY KEY AUTOINCREMENT,date LONG,score INTEGER);");
-      db.execSQL("create table records (id integer primary key autoincrement,date long,score integer);");
+      db.execSQL("CREATE TABLE records (id INTEGER PRIMARY KEY AUTOINCREMENT,date LONG,score INTEGER);");
     }
 
     @Override
@@ -32,16 +31,16 @@ public class DBHelper extends SQLiteOpenHelper {
     
     }
     
-    public void setNewRecord(Context context,int record){
+    public void setNewRecord(int record){
     	ContentValues cv = new ContentValues();
     	cv.put("date", SystemClock.uptimeMillis());
 		cv.put("score", record);
-		DBHelper.getInstance(context).getWritableDatabase().insert("records", null, cv);
-		DBHelper.getInstance(context).close();
+		this.getWritableDatabase().insert("records", null, cv);
+		this.close();
     }
     
-    public int[] getRecords(Context context){
-    	Cursor c = DBHelper.getInstance(context).getWritableDatabase().
+    public int[] getRecords(){
+    	Cursor c = this.getWritableDatabase().
     			query("records", new String[] {"score"}, null, null, null, null, "score DESC");
 		int[] records = {} ;
 		if (c.moveToFirst()) {
@@ -52,7 +51,7 @@ public class DBHelper extends SQLiteOpenHelper {
 				i++;
 			} while (c.moveToNext());
 		}
-		DBHelper.getInstance(context).close();
+		this.close();
 		return records;
     }
 

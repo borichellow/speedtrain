@@ -128,7 +128,7 @@ public class Game extends Activity implements OnClickListener{
 				break;
 			case R.id.textFinish:
 				textFinish.setBackgroundResource(R.drawable.textclicked);
-				DBHelper.getInstance(this).setNewRecord(this, score);
+				DBHelper.getInstance(this).setNewRecord(score);
 				finish();
     			break;
 			case R.id.textRestart2:

@@ -21,7 +21,7 @@ public class Records extends Activity implements OnClickListener{
         
         btnBack.setOnClickListener((OnClickListener) this);
         
-		int[] records = DBHelper.getInstance(this).getRecords(this);
+		int[] records = DBHelper.getInstance(this).getRecords();
 		
 		for (int i =0; i < records.length; i++){
 			if (i >= fields.length){break;}
