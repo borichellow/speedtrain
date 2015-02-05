@@ -11,6 +11,8 @@ import android.os.SystemClock;
 
 public class DBHelper extends SQLiteOpenHelper {
 	private static DBHelper instance;
+	final String TABLE_RECORDS = "records";
+	final String ROW_SCRORE = "score";
 
 	private DBHelper(Context context) {
 		super(context, "speedTrainDB", null, 1);
@@ -25,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("CREATE TABLE records (id INTEGER PRIMARY KEY AUTOINCREMENT,date LONG,score INTEGER);");
+		db.execSQL("CREATE TABLE "+ TABLE_RECORDS +" (id INTEGER PRIMARY KEY AUTOINCREMENT,date LONG,"+ ROW_SCRORE +" INTEGER);");
 	}
 
 	@Override
@@ -36,19 +38,19 @@ public class DBHelper extends SQLiteOpenHelper {
 	public void setNewRecord(int record) {
 		ContentValues cv = new ContentValues();
 		cv.put("date", SystemClock.uptimeMillis());
-		cv.put("score", record);
-		this.getWritableDatabase().insert("records", null, cv);
+		cv.put(ROW_SCRORE, record);
+		this.getWritableDatabase().insert(TABLE_RECORDS, null, cv);
 		this.close();
 	}
 
 	public ArrayList<Integer> getRecords() {
 		Cursor c = this.getWritableDatabase().query("records",
-				new String[] { "score" }, null, null, null, null, "score DESC");
+				new String[] { ROW_SCRORE }, null, null, null, null, ROW_SCRORE + " DESC");
 		ArrayList<Integer> records = new ArrayList<Integer>();
 		if (c.moveToFirst()) {
 			int i = 0;
 			do {
-				int scoreColIndex = c.getColumnIndex("score");
+				int scoreColIndex = c.getColumnIndex(ROW_SCRORE);
 				records.add(i, c.getInt(scoreColIndex)) ;
 				i++;
 			} while (c.moveToNext());

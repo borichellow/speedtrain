@@ -111,25 +111,25 @@ public class Game extends Activity implements OnClickListener {
 			pause.setClickable(true);
 			break;
 		case R.id.textResume:
-			textResume.setBackgroundResource(R.drawable.textclicked);
+			//textResume.setBackgroundResource(R.drawable.textclicked);
 			pause.setVisibility(View.INVISIBLE);
 			backToGame();
 			break;
 		case R.id.textRestart:
-			textRestart.setBackgroundResource(R.drawable.textclicked);
+			//textRestart.setBackgroundResource(R.drawable.textclicked);
 			restart();
 			break;
 		case R.id.textQuit:
-			textQuit.setBackgroundResource(R.drawable.textclicked);
+			//textQuit.setBackgroundResource(R.drawable.textclicked);
 			finish();
 			break;
 		case R.id.textFinish:
-			textFinish.setBackgroundResource(R.drawable.textclicked);
+//			textFinish.setBackgroundResource(R.drawable.textclicked);
 			DBHelper.getInstance(this).setNewRecord(score);
 			finish();
 			break;
 		case R.id.textRestart2:
-			textRestart2.setBackgroundResource(R.drawable.textclicked);
+//			textRestart2.setBackgroundResource(R.drawable.textclicked);
 			restart();
 			break;
 		}
@@ -273,8 +273,8 @@ public class Game extends Activity implements OnClickListener {
 		timePause = SystemClock.uptimeMillis();
 		customHandler.removeCallbacks(updateTimerThread);
 		shadow.setVisibility(View.VISIBLE);
-		textRestart.setBackgroundResource(R.drawable.text);
-		textResume.setBackgroundResource(R.drawable.text);
+//		textRestart.setBackgroundResource(R.drawable.text);
+//		textResume.setBackgroundResource(R.drawable.text);
 		game.setClickable(false);
 		textPause.setClickable(false);
 		btnYes.setClickable(false);

@@ -33,17 +33,17 @@ public class MainMenu extends Activity implements OnClickListener{
     public void onClick(View v) {
     	switch (v.getId()){
     		case R.id.train:
-    			textPlay.setBackgroundResource(R.drawable.menu_clicked); 
+//    			textPlay.setBackgroundResource(R.drawable.menu_clicked); 
     			Intent intentGame = new Intent(this, Game.class);
     			startActivity(intentGame);
     			break;
     		case R.id.records:
-    			textRecords.setBackgroundResource(R.drawable.menu_clicked);
+//    			textRecords.setBackgroundResource(R.drawable.menu_clicked);
     			Intent intentRecords = new Intent(this, Records.class);
     			startActivity(intentRecords);
     			break;
     		case R.id.quit:
-    			textQuit.setBackgroundResource(R.drawable.menu_clicked);
+//    			textQuit.setBackgroundResource(R.drawable.menu_clicked);
     			finish();
     			break;
     	}
@@ -52,7 +52,7 @@ public class MainMenu extends Activity implements OnClickListener{
     @Override
     public void onResume(){
     	super.onResume();
-    	textPlay.setBackgroundResource(R.drawable.menu);
-    	textRecords.setBackgroundResource(R.drawable.menu);
+//    	textPlay.setBackgroundResource(R.drawable.menu);
+//    	textRecords.setBackgroundResource(R.drawable.menu);
     }
 }
