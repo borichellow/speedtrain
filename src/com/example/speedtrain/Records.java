@@ -7,31 +7,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Records extends Activity implements OnClickListener {
 
-	int[] fields = { R.id.textRecord1, R.id.textRecord2, R.id.textRecord3,
-			R.id.textRecord4, R.id.textRecord5, R.id.textRecord6,
-			R.id.textRecord7 };
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.records);
-
+		
+		LinearLayout recordFields = (LinearLayout) findViewById(R.id.recordFields);
 		Button btnBack = (Button) findViewById(R.id.btnBack);
 		TextView textRecord = null;
 
 		btnBack.setOnClickListener((OnClickListener) this);
 
-		ArrayList<Integer> records = DBHelper.getInstance(this).getRecords();
-
-		for (int i = 0; i < records.size(); i++) {
-			if (i >= fields.length) {
-				break;
-			}
-			textRecord = (TextView) findViewById(fields[i]);
+		ArrayList<Integer> records = DBHelper.getInstance(this).getRecords();		
+		for (int i = 0; i < recordFields.getChildCount(); i++) {
+			textRecord = ((TextView)recordFields.getChildAt(i));
 			textRecord.setText(Integer.toString(records.get(i)));
 		}
 	}

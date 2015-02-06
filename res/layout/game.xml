@@ -61,8 +61,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:src="@drawable/h" />
         </LinearLayout>
 
@@ -157,19 +157,24 @@
     <LinearLayout
         android:id="@+id/start"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
+        android:layout_height="fill_parent"
         android:clickable="true"
         android:orientation="vertical"
         android:visibility="visible" >
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="11"
+            android:orientation="vertical" >
+        </LinearLayout>
+
         <Button
             android:id="@+id/btnStart"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="2"
             android:background="@drawable/button_grey_big"
             android:clickable="true"
             android:text="Touch to star" />
@@ -177,104 +182,129 @@
 
     <LinearLayout
         android:id="@+id/pause"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:clickable="false"
-        android:gravity="center|left|center_vertical"
-        android:orientation="vertical"
         android:visibility="invisible" >
 
-        <Button
-            android:id="@+id/textResume"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/button_grey_small"
-            android:text="Resume" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/textRestart"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/button_grey_small"
-            android:text="Restart" />
+            android:layout_weight="3"
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/textQuit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/button_grey_small"
-            android:text="Quit" />
+            <Button
+                android:id="@+id/textResume"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/button_grey_small"
+                android:text="Resume" />
+
+            <Button
+                android:id="@+id/textRestart"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/button_grey_small"
+                android:text="Restart" />
+
+            <Button
+                android:id="@+id/textQuit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/button_grey_small"
+                android:text="Quit" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/end"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:clickable="false"
-        android:orientation="vertical"
         android:visibility="invisible" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_grey_big"
-            android:clickable="false"
-            android:orientation="vertical"
-            android:visibility="visible" >
-
-            <TextView
-                android:id="@+id/textEnd1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Weldone!"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffffff" />
-
-            <TextView
-                android:id="@+id/textEnd2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Your score:"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffffff" />
-
-            <TextView
-                android:id="@+id/textEnd3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
-                android:text=""
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ffffff" />
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/endButtons"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button"
+                android:clickable="false"
+                android:orientation="vertical"
+                android:visibility="visible" >
+
+                <TextView
+                    android:id="@+id/textEnd1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Weldone!"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/textEnd2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Your score:"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/textEnd3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:text=""
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/textFinish"
@@ -296,6 +326,13 @@
                 android:background="@drawable/button_grey_small"
                 android:text="TryAgain"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
         </LinearLayout>
     </LinearLayout>
 
